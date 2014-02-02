@@ -1,0 +1,17 @@
+<!doctype>
+<html ng-app>
+	<head>
+		<title>Hello Controller</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-controller="HelloController">
+			<p>{{greeting.text}}, World.</p>
+		</div>
+		<script>
+			function HelloController($scope){
+				$scope.greeting = { text : 'Hello'};
+			}
+		</script>
+	</body>
+</html>
