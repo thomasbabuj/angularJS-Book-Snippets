@@ -1,0 +1,17 @@
+<!doctype>
+<html ng-app>
+	<head>
+		<title>Data-Binding 2</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body ng-controller="TextController">
+		<p>{{message.someText}}</p>
+	</body>
+	<script>
+		var messages = [];
+		messages.someText = 'You have started your journey.';
+		function TextController($scope){
+			$scope.message = messages;
+		}
+	</script>
+</html>
