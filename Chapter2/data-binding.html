@@ -1,0 +1,17 @@
+<!doctype>
+<html ng-app>
+	<head >
+		<title>
+			Chapter2- Databinding
+		</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body ng-controller="TextController">
+		<p>{{someText}}</p>
+	</body>
+	<script>
+		function TextController($scope){
+			$scope.someText = 'You have started your journey!';
+		}
+	</script>
+</html>
