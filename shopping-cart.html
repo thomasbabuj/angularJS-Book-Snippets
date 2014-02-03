@@ -20,6 +20,10 @@
 					{title: 'Product2', quantity: 4, price: 2.94},
 					{title: 'Product3', quantity:10, price: 25.34}
 				];
+
+				$scope.remove = function(index) {
+					$scope.items.splice(index,1);
+				}
 			}
 		</script>
 	</body>
