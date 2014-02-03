@@ -1,0 +1,21 @@
+<doctype>
+<html ng-app="myApp">
+	<head>
+		<title>Data Binding - Correct Way</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body ng-controller="TextController">
+		<p>{{message.someText}}</p>
+	</body>
+	<script>
+
+		var myModule = angular.module("myApp", []);
+		myModule.controller('TextController', function($scope){
+			var randomQuotes = [];
+			randomQuotes.someText = 'Your quote appears here!!';
+
+			$scope.message = randomQuotes;
+		});
+
+	</script>
+</html>
