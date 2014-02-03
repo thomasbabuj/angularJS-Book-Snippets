@@ -1,0 +1,26 @@
+<!doctype>
+<html ng-app>
+	<head>
+		<title>Your Cart</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body ng-controller='CartController'>
+		<h1>Your Cart :</h1>
+		<div ng-repeat="item in items">
+			<span>{{item.title}}</span>
+			<input ng-model="item.quantity">
+			<span>{{item.pirce | currency }}</span>
+			<span>{{item.price * item.quantity | currency }}</span>
+			<button ng-click="remove($index)">Remove</button>
+		</div>
+		<script>
+			function CartController($scope) {
+				$scope.items = [
+					{title: 'Product1', quantity: 20, price: 20.40},
+					{title: 'Product2', quantity: 4, price: 2.94},
+					{title: 'Product3', quantity:10, price: 25.34}
+				];
+			}
+		</script>
+	</body>
+</html>
