@@ -1,0 +1,22 @@
+<!doctype>
+<html ng-app>
+	<head>
+		<title>Forms Calculator</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body>
+		<form ng-controller="FormsController">
+			StartingEstimate :  <input type="text" ng-model="funding.startEstimate" ng-change="computeNeeded()" >
+			Recommendation : {{funding.needed}}
+		</form>
+		<script>
+			function FormsController($scope){
+				$scope.funding = { startEstimate : 0, needed : 0};
+
+				$scope.computeNeeded = function() {
+					$scope.funding.needed = $scope.funding.startEstimate * 10;
+				}
+			}
+		</script>
+	</body>
+</html>
