@@ -1,0 +1,23 @@
+<!doctype>
+<html ng-app="myApp">
+	<head>
+		<title>Forms with $watch()</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<form ng-controller="FormsController">
+		Starting : <input type="text" ng-model="funding.startupEstimate" />
+		Recommendation : {{funding.needed}}
+	</form>
+	<script>
+		var myModule = angular.module('myApp', []);
+		myModule.controller('FormsController', function($scope) {
+
+			$scope.funding = { startupEstimate : 0, needed : 0};
+
+			// Watch will helps to check any change in the value
+			$scope.$watch('funding.startupEstimate', function(){
+				$scope.funding.needed = $scope.funding.startupEstimate * 10;
+			});
+		});
+	</script>
+</html>
