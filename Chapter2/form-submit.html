@@ -1,0 +1,35 @@
+<!doctype>
+<html ng-app>
+	<head>
+		<title>Form with ng-submit and reset button</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body>
+		<form ng-controller="FormController" ng-submit="submitBtn()">
+			StartingEstimate : <input type="text" ng-model="startingEstimate" >
+			Recommendation: {{needed}}
+			<button>Fund my startup</button>
+			<button ng-click="reset()">Reset</button>
+		</form>
+		<script>
+			function FormController($scope){
+				$scope.changeNeeded = function() {
+					$scope.needed =  $scope.startingEstimate * 10;
+				};
+
+				$scope.$watch('startingEstimate', function(){
+					$scope.needed =  $scope.startingEstimate * 10;
+				});
+
+				$scope.submitBtn = function() {
+					window.alert( 'Sorry, Please get more customers first.');
+				};
+
+				$scope.reset = function() {
+					$scope.startingEstimate = 0;
+				}
+
+			}
+		</script>
+	</body>
+</html>
