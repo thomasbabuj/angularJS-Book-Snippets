@@ -1,0 +1,30 @@
+<!doctype>
+<html ng-app>
+	<head>
+		<title>Hide and Show using ng-show</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-controller="HideNShowController">
+			<button ng-click="toggleMenu()">Toggle Menu</button>	
+			<ul ng-show="menuState">
+				<li>Home</li>
+				<li>About Us</li>
+				<li>Contact Us</li>
+			</ul>		
+		</div>
+		<script>
+			function HideNShowController($scope){
+
+				$scope.menuState = false;
+
+				$scope.toggleMenu = function () {
+					console.log ('toggle button triggered !!');
+					$scope.menuState = !$scope.menuState;
+				}
+
+			}
+
+		</script>
+	</body>
+</html>
