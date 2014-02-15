@@ -40,6 +40,8 @@
 					$scope.bill.subtotal = $scope.bill.total - $scope.bill.discount;
 				}
 
+				// here we are passing items as string, it will be 
+				// evaluated as an expression in the scope
 				$scope.$watch('items', calculateTotal, true);
 			}
 		</script>
