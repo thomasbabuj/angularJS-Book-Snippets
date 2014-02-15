@@ -1,0 +1,39 @@
+<!doctype>
+<html ng-app="ShoppingModule">
+	<head>
+		<title>Shopping Cart With Factory Service</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-controller="CartController">
+			<h1>Shop1</h1>
+			<table>
+				<tr ng-repeat="item in items">
+					<td>{{item.title}}</td>
+					<td>{{item.quantity}}</td>
+					<td>{{item.price}}</td>
+				</tr>
+			</table>
+		</div>
+		<script>
+			var shoppingModule = angular.module('ShoppingModule', []);
+
+			shoppingModule.factory('Items', function(){
+				var items = {};
+				items.query = function(){
+					return [
+						{title: 'product1', quantity: 3, price: 2.34},
+						{title: 'product2', quantity: 8, price: 6.39},
+						{title: 'product3', quantity: 5, price: 12.23}
+					];					
+				};
+				return items;
+			});
+
+			shoppingModule.controller('CartController', function($scope, Items){
+				$scope.items = Items.query();
+			});
+
+		</script>
+	</body>
+</html>
