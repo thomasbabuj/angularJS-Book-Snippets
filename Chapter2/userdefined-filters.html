@@ -1,0 +1,31 @@
+<!doctype>
+<html ng-app="myApp">
+	<head>
+		<title>Userdefined Filters</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-controller="myController">
+			<h1>{{pageHeading | titleCase}}</h1>
+		</div>
+		<script>
+			var myModule = angular.module('myApp', []);
+			myModule.filter('titleCase', function(){
+				var titleCaseFilter = function(input) {
+					var words = input.split(' ');
+					for(var i=0; i <words.length; i++) {
+						words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+					}
+
+					return words.join(' ');
+				};
+
+				return titleCaseFilter;
+			});
+
+			myModule.controller('myController', function($scope){
+				$scope.pageHeading = "behold the majesty of your page title";
+			});
+		</script>
+	</body>
+</html>
