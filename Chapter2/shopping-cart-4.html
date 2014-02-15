@@ -1,0 +1,43 @@
+<!doctype>
+<html ng-app>
+	<head>
+		<title>Shopping Cart with $watch</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-controller="CartController">
+			<div ng-repeat="item in items">
+				<span>{{item.title}}</span>
+				<input type="text" ng-model="item.quantity" />
+				<span>{{item.quantity}}</span>
+				<span>{{item.quantity * item.price | currency}}
+			</div>
+			<div>Total : {{bill.total | currency}}</div>
+			<div>Discount : {{bill.discount | currency}}</div>
+			<div>SubTotal: {{bill.subtotal | currency}}</div>
+		</div>
+		<script type="text/javascript">
+			function CartController($scope){
+				$scope.bill = [];
+
+				$scope.items = [
+					{title: 'product1', quantity: 3, price: 2.34},
+					{title: 'product2', quantity: 8, price: 6.39},
+					{title: 'product3', quantity: 5, price: 12.23}
+				];
+
+				$scope.$watch(function(){
+					var total=0;
+
+					for(var i=0, len=$scope.items.length; i < len; i++) {
+						total += $scope.items[i].quantity * $scope.items[i].price;
+					}
+
+					$scope.bill.total = total;
+					$scope.bill.discount = total > 100 ? 10 : 0;
+					$scope.bill.subtotal = $scope.bill.total - $scope.bill.discount;
+				});
+			}
+		</script>
+	</body>
+</html>
