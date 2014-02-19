@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		<title>Form Validation</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body>
+		<h1>Sign Up</h1>
+		<form name="addUserForm" ng-controller="AddUserController">
+			<div ng-show="message">{{message}}</div>
+			<div>First name: <input type="text" ng-model="user.first" required name="firstName"></div>
+			<div>Last name: <input type="text" ng-model="user.last" required></div>
+			<div>Email :<input type="email" ng-model="user.email" required></div>
+			<div>Aga :  
+				<input type="text" ng-model="user.age" ng-maxlength="3" ng-minlength="1">
+			</div>
+			<div><button ng-click="addUser()" ng-disabled="!addUserForm.$valid">Submit</button></div>
+		</form>
+	</body>
+	<script>
+		function AddUserController($scope){
+			$scope.message = '';
+
+			$scope.addUser = function(){
+				$scope.message = 'Thanks, '+ $scope.user.first + ', we added you!';
+			};
+		}
+	</script>
+</html>
