@@ -1,0 +1,40 @@
+<!doctype>
+<html ng-app="app" lang="en">
+	<head>
+		<title>Custom Directives</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	</head>
+	<body ng-controller="SomeController">
+		<button ng-click="clickUnfocused()">No Foucsed</button>
+		<button ng-click="clickFocused()" ngbk-focus>I'm very focused!</button>
+		<div>{{message.text}}</div>
+	</body>
+	<script>
+		function SomeController($scope){
+			$scope.message = {text: 'nothing clicked yet'};
+
+			$scope.clickUnfocused = function(){
+				$scope.message.text = 'Unfocused button clicked';
+			};
+
+			$scope.clickFocused = function() {
+				$scope.message.text = 'focus button clicked';
+			};
+
+		}
+
+		var appModule = angular.module('app', []);
+
+		appModule.directive('ngbk-focus', function(){
+
+			console.log ('I am in ngbk-foucus');
+			return {
+
+				link : function(scope, element, attrs, controller) {
+
+					element[0].focus();
+				}
+			};
+		});
+	</script>
+</html>
