@@ -5,13 +5,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
 </head>
 <body ng-app>
-	<div ng-controller="HelloController">
+	<div ng-controller="HelloCtrl">
 		Say hello to : <input type="text" ng-model="name"><br />
-		<h1>Hello, {{name}}</h1>
+		<h1>Hello, {{getName()}}</h1>
 	</div>
 	<script>
-		function HelloController($scope) {
-			$scope.name = 'World';
+		var HelloCtrl = function($scope) {
+			$scope.getName = function() {
+				return $scope.name;
+			}
 		}
 	</script>
 </body>
