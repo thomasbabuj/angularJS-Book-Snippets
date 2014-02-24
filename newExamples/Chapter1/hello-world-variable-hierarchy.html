@@ -1,0 +1,26 @@
+<!--
+
+	Here we define a variable on one scope and omit it from a child scope.
+	name variable is visible accross the whole applications. even if it was defined on the top-most scope only.
+	Variables defined on a parent scope are accessible in child scopes.
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Variable Hierarchy</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+</head>
+<body ng-app ng-init="name='World'">
+	<h1>Hello, {{name}}</h1>
+	<div ng-congroller="HelloCtrl">
+		Say hello to  : <input type="text" ng-model="name" >
+		<h2>Hello, {{name}}!</h2>
+	</div>
+	<script>
+		var HelloCtrl = function($scope) {
+
+		};
+	</script>
+</body>
+</html>
