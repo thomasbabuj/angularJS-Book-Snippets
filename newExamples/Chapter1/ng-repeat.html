@@ -8,10 +8,12 @@
 	<div> 
 		<ul ng-controller="WorldCtrl">
 			<li ng-repeat="country in countries">
-				{{country.name}} has populations of {{country.population}} 
+				{{country.name}} has populations of {{country.population}} <br />
+				   &nbsp; &nbsp; &nbsp; - {{worldsPercentage(country.population)}} % of the World's population.
 			</li>
 			<hr>
-			World's Population: {{population}} millions.
+			World's Population: {{population}} millions. <br />
+			
 		</ul>
 		
 		
@@ -25,6 +27,11 @@
 			];
 
 			$scope.population = 7000;
+
+			$scope.worldsPercentage = function(countryPopulation) {
+				var temp =  (countryPopulation / $scope.population) * 100;
+				return Math.round(temp*100)/100;
+			}
 		};
 	</script>
 </body>
